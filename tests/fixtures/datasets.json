@@ -1,0 +1,15 @@
+{
+  "output_dir": "build-test-data",
+  "samples": [
+    {"name": "tiny", "size": 4, "seeds": [17]}
+  ],
+  "datasets": [
+    {
+      "name": "toy",
+      "format": "gml",
+      "path": "tests/fixtures/toy.gml",
+      "reference_attributes": ["value"],
+      "largest_component": false
+    }
+  ]
+}

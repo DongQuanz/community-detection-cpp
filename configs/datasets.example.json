@@ -1,0 +1,43 @@
+{
+  "output_dir": "data/processed",
+  "samples": [
+    {
+      "name": "all_algorithms",
+      "size": 400,
+      "seeds": [101, 202, 303, 404, 505]
+    },
+    {
+      "name": "spectral_medium",
+      "size": 5000,
+      "seeds": [101, 202, 303]
+    }
+  ],
+  "datasets": [
+    {
+      "name": "karate",
+      "format": "gml",
+      "path": "data/raw/karate/karate.gml",
+      "reference": "builtin_karate",
+      "largest_component": false
+    },
+    {
+      "name": "football",
+      "format": "gml",
+      "path": "data/raw/football/football.gml",
+      "reference_attributes": ["value"],
+      "largest_component": false
+    },
+    {
+      "name": "cond_mat",
+      "format": "edge_list",
+      "path": "data/raw/cond-mat/ca-CondMat.txt.gz",
+      "largest_component": true
+    },
+    {
+      "name": "reddit2",
+      "format": "graphsaint",
+      "root": "data/raw/reddit2",
+      "largest_component": false
+    }
+  ]
+}

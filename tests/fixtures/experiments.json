@@ -1,0 +1,41 @@
+{
+  "manifest": "build-test-data/manifest.json",
+  "output_dir": "build-test-results",
+  "resource_guards": {
+    "girvan_newman_max_n": 100,
+    "girvan_newman_max_m": 100,
+    "spectral_max_edge_visits": 1000000,
+    "spectral_max_orthogonalization_ops": 1000000
+  },
+  "algorithm_options": {
+    "spectral": {
+      "laplacian": "normalized",
+      "bisection": "sweep",
+      "kmeans_restarts": 2,
+      "dense_threshold": 32
+    }
+  },
+  "dataset_settings": {
+    "toy": {
+      "spectral_k": [2],
+      "girvan_newman_k": [2]
+    }
+  },
+  "protocols": [
+    {
+      "name": "smoke",
+      "scope": "full",
+      "algorithms": ["girvan_newman", "spectral", "louvain", "label_propagation"],
+      "algorithm_seeds": {
+        "girvan_newman": [42],
+        "spectral": [11, 37],
+        "louvain": [11, 37],
+        "label_propagation": [11, 37]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]},
+        {"rate": 0.1, "seeds": [19]}
+      ]
+    }
+  ]
+}

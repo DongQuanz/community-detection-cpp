@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Reject private and generated artifacts in Git
+        shell: bash
+        run: |
+          tracked="$(git ls-files \
+            'AGENT.md' 'AGENTS.md' 'docs/**' \
+            'data/**' ':!data/README.md' \
+            'results/**' 'results-*/**' \
+            'configs/*.local.json' \
+            'experiment_commands*.txt')"
+          if [[ -n "$tracked" ]]; then
+            echo "Private or generated artifacts must not be committed:"
+            echo "$tracked"
+            exit 1
+          fi
+
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --parallel 2
+
+      - name: Test C++ and pipeline
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Verify install package
+        run: cmake --install build --prefix build-install-test
+
+      - name: Compile-check Python
+        run: python -m py_compile tools/*.py tests/test_pipeline.py

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "experiment": "canonical_community_detection_benchmark",
+  "description": "The single registered benchmark suite; protocol entries are execution phases of this experiment.",
+  "manifest": "data/processed/manifest.json",
+  "output_dir": "results",
+  "resource_guards": {
+    "girvan_newman_max_n": 1000,
+    "girvan_newman_max_m": 10000,
+    "spectral_max_edge_visits": 2000000000,
+    "spectral_max_orthogonalization_ops": 5000000000
+  },
+  "algorithm_options": {
+    "girvan_newman": {
+      "gn_max_n": 1000,
+      "gn_max_m": 10000
+    },
+    "spectral": {
+      "laplacian": "normalized",
+      "bisection": "sweep",
+      "kmeans_restarts": 20,
+      "dense_threshold": 256,
+      "eigensolver_tolerance": "1e-9",
+      "max_eigensolver_residual": "1e-4"
+    },
+    "louvain": {},
+    "label_propagation": {
+      "max_iterations": 100
+    }
+  },
+  "dataset_settings": {
+    "karate": {
+      "spectral_k": [2],
+      "girvan_newman_k": [2]
+    },
+    "football": {
+      "spectral_k": [12],
+      "girvan_newman_k": [12]
+    },
+    "cond_mat": {
+      "spectral_k": [16],
+      "girvan_newman_k": [16]
+    },
+    "reddit2": {
+      "spectral_k": [41],
+      "girvan_newman_k": [41]
+    }
+  },
+  "protocols": [
+    {
+      "name": "full_scale",
+      "scope": "full",
+      "algorithms": [
+        "girvan_newman",
+        "spectral",
+        "louvain",
+        "label_propagation"
+      ],
+      "algorithm_seeds": {
+        "girvan_newman": [42],
+        "spectral": [11, 23, 37, 53, 71, 89, 107, 131, 157, 191],
+        "louvain": [11, 23, 37, 53, 71, 89, 107, 131, 157, 191, 223, 257, 293, 331, 373, 419, 461, 509, 557, 607],
+        "label_propagation": [11, 23, 37, 53, 71, 89, 107, 131, 157, 191, 223, 257, 293, 331, 373, 419, 461, 509, 557, 607]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]}
+      ]
+    },
+    {
+      "name": "all_algorithms_large_sample",
+      "scope": "sample",
+      "sample_profile": "all_algorithms",
+      "datasets": ["cond_mat", "reddit2"],
+      "algorithms": [
+        "girvan_newman",
+        "spectral",
+        "louvain",
+        "label_propagation"
+      ],
+      "algorithm_seeds": {
+        "girvan_newman": [42],
+        "spectral": [11, 37, 71, 107, 157],
+        "louvain": [11, 37, 71, 107, 157],
+        "label_propagation": [11, 37, 71, 107, 157]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]}
+      ]
+    },
+    {
+      "name": "spectral_medium_sample",
+      "scope": "sample",
+      "sample_profile": "spectral_medium",
+      "datasets": ["cond_mat", "reddit2"],
+      "algorithms": ["spectral"],
+      "algorithm_seeds": {
+        "spectral": [11, 37, 71, 107, 157]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]}
+      ]
+    },
+    {
+      "name": "spectral_k_sensitivity",
+      "scope": "full",
+      "datasets": ["cond_mat"],
+      "algorithms": ["spectral"],
+      "dataset_settings": {
+        "cond_mat": {"spectral_k": [8, 16, 32]}
+      },
+      "algorithm_seeds": {
+        "spectral": [11, 37, 71, 107, 157]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]}
+      ]
+    },
+    {
+      "name": "robustness_scalable",
+      "scope": "full",
+      "algorithms": ["louvain", "label_propagation"],
+      "algorithm_seeds": {
+        "louvain": [11, 37, 71, 107, 157],
+        "label_propagation": [11, 37, 71, 107, 157]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]},
+        {"rate": 0.01, "seeds": [701, 709, 719, 727, 733]},
+        {"rate": 0.05, "seeds": [739, 743, 751, 757, 761]}
+      ]
+    },
+    {
+      "name": "louvain_resolution_sensitivity",
+      "scope": "full",
+      "algorithms": ["louvain"],
+      "resolutions": [0.5, 0.75, 1.0, 1.25, 1.5, 2.0],
+      "algorithm_seeds": {
+        "louvain": [11, 37, 71, 107, 157]
+      },
+      "dropout": [
+        {"rate": 0.0, "seeds": [0]}
+      ]
+    }
+  ]
+}
