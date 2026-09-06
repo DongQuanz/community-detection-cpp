@@ -10,7 +10,7 @@ Implement, run, and evaluate **Girvan–Newman**, **Spectral Clustering**,
 **Louvain**, and **Label Propagation** under one consistent protocol.
 
 <p>
-  <a href="https://github.com/DongQuanz/community_detection_cpp/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/DongQuanz/community_detection_cpp/ci.yml?branch=main&amp;style=for-the-badge&amp;logo=githubactions&amp;logoColor=white&amp;label=build"></a>
+  <a href="https://github.com/DongQuanz/community-detection-cpp/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/DongQuanz/community-detection-cpp/ci.yml?branch=main&amp;style=for-the-badge&amp;logo=githubactions&amp;logoColor=white&amp;label=build"></a>
   <a href="https://isocpp.org/"><img alt="C++ 17" src="https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&amp;logo=cplusplus&amp;logoColor=white"></a>
   <a href="https://www.python.org/"><img alt="Python 3.10+" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white"></a>
   <a href="https://cmake.org/"><img alt="CMake 3.18+" src="https://img.shields.io/badge/CMake-3.18%2B-064F8C?style=for-the-badge&amp;logo=cmake&amp;logoColor=white"></a>
@@ -284,7 +284,7 @@ target_link_libraries(your_target
 ## Repository structure
 
 ```text
-community_detection_cpp/
+community-detection-cpp/
 ├── apps/                         # Single-run CLI
 ├── cmake/                        # Installed CMake package configuration
 ├── configs/                      # Protocol and dataset configuration templates
@@ -327,7 +327,7 @@ repository's **Cite this repository** menu.
 ```text
 DongQuanZ. Community Detection Benchmark: a reproducible C++17/Python
 pipeline for community-detection research. Version 1.0.0, 2026.
-https://github.com/DongQuanz/community_detection_cpp
+https://github.com/DongQuanz/community-detection-cpp
 ```
 
 ## License

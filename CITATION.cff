@@ -12,7 +12,7 @@ authors:
   - family-names: "DongQuanZ"
 version: 1.0.0
 date-released: 2026-09-05
-repository-code: "https://github.com/DongQuanz/community_detection_cpp"
+repository-code: "https://github.com/DongQuanz/community-detection-cpp"
 keywords:
   - community detection
   - graph clustering
