@@ -62,3 +62,10 @@ README together. Make a schema-version change explicit when compatibility is bro
 Only `data/README.md` belongs in version control. Generated reports must remain
 traceable to `manifest.json`, `provenance.json`, `run_index.jsonl`, the exact
 configuration, and the binary hash. Do not edit experiment output manually.
+
+## License and citation
+
+By contributing, you agree that your contribution is distributed under the
+repository's PolyForm Noncommercial License 1.0.0. If you use the project in a
+public research output, please cite it as described in `CITATION.cff`. Do not
+submit code that you do not have the right to contribute under these terms.

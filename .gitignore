@@ -6,6 +6,9 @@ CMakeCache.txt
 CMakeFiles/
 CTestTestfile.cmake
 Makefile
+build.ninja
+.ninja_deps
+.ninja_log
 cmake_install.cmake
 compile_commands.json
 *.o
@@ -34,6 +37,8 @@ __pycache__/
 .ruff_cache/
 .cache/
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
 .venv/
 venv/
@@ -64,6 +69,11 @@ perf.data*
 # Editors and OS files
 .idea/
 .vscode/
+.vs/
+*.sln
+*.suo
+*.user
+*.userosscache
 *.swp
 *.swo
 *~

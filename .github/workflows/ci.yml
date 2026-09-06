@@ -32,12 +32,24 @@ jobs:
             'data/**' ':!data/README.md' \
             'results/**' 'results-*/**' \
             'configs/*.local.json' \
-            'experiment_commands*.txt')"
+            'experiment_commands*.txt' \
+            '.env' '.env.*' '*.pem' '*.key' '*.log' \
+            '*.exe' '*.dll' '*.so' '*.dylib' '*.o' '*.obj' '*.a' '*.pyc')"
           if [[ -n "$tracked" ]]; then
             echo "Private or generated artifacts must not be committed:"
             echo "$tracked"
             exit 1
           fi
+
+      - name: Verify public licensing metadata
+        shell: bash
+        run: |
+          test -s LICENSE
+          test -s CITATION.cff
+          grep -Fqx '# PolyForm Noncommercial License 1.0.0' LICENSE
+          grep -Fqx 'Required Notice: Copyright (c) 2026 DongQuanZ' LICENSE
+          grep -Fqx 'cff-version: 1.2.0' CITATION.cff
+          grep -Fqx 'license: PolyForm-Noncommercial-1.0.0' CITATION.cff
 
       - name: Configure
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release

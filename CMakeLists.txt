@@ -81,6 +81,10 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/community_detectionConfigVersion.cmake
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/community_detection
 )
+install(
+    FILES LICENSE CITATION.cff
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/community_detection
+)
 
 if(COMMUNITY_DETECTION_BUILD_CLI)
     add_executable(community_detect apps/community_detect.cpp)

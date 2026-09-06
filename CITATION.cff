@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  Nếu sử dụng phần mềm này trong nghiên cứu, vui lòng trích dẫn dự án bằng
+  thông tin dưới đây.
+type: software
+title: "Community Detection Benchmark"
+license: PolyForm-Noncommercial-1.0.0
+abstract: >-
+  A reproducible C++17 and Python pipeline for evaluating disjoint community
+  detection algorithms on simple, undirected, unweighted graphs.
+authors:
+  - family-names: "DongQuanZ"
+version: 1.0.0
+date-released: 2026-09-05
+repository-code: "https://github.com/DongQuanz/community_detection_cpp"
+keywords:
+  - community detection
+  - graph clustering
+  - Girvan-Newman
+  - spectral clustering
+  - Louvain
+  - label propagation
