@@ -325,7 +325,7 @@ If this project supports your research, please cite it using the metadata in
 repository's **Cite this repository** menu.
 
 ```text
-DongQuanZ. Community Detection Benchmark: a reproducible C++17/Python
+Dong-Quan Ngo-Nguyen. Community Detection Benchmark: a reproducible C++17/Python
 pipeline for community-detection research. Version 1.0.0, 2026.
 https://github.com/DongQuanz/community-detection-cpp
 ```
